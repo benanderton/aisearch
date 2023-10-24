@@ -81,14 +81,14 @@ func (h *Handler) search() error {
 	// Keep matches that were close
 	closeMatches := make([]Match, 0)
 	for _, match := range res.Matches {
-		if match.Score <= 0.28 { // Only show close matches
-			closeMatches = append(closeMatches, match)
-		}
+		// if match.Score <= 0.5 { // Only show close matches
+		closeMatches = append(closeMatches, match)
+		// }
 	}
 
 	// If no close matches found, return, but push this new item to the catalogue as a non-actual item
 	if len(closeMatches) == 0 {
-		fmt.Println("No close matches found - we should log this as a new item in the catalogue")
+		fmt.Println("No close matches found - we could log this as a new item in the catalogue")
 		return nil
 	}
 
